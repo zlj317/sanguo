@@ -1,73 +1,98 @@
 import type { PersonRelation } from '@/types'
 
 export const personRelations: PersonRelation[] = [
-  // 桃园三兄弟
-  { id:1, person1Id:1, person2Id:2, relationType:'结义兄弟', description:'桃园三结义，刘备为兄，关羽为二弟' },
-  { id:2, person1Id:1, person2Id:3, relationType:'结义兄弟', description:'桃园三结义，张飞为三弟' },
-  { id:3, person1Id:2, person2Id:3, relationType:'结义兄弟', description:'关羽张飞二弟三弟' },
-  // 君臣
-  { id:4, person1Id:1, person2Id:4, relationType:'君臣', description:'刘备三顾茅庐请诸葛亮' },
-  { id:5, person1Id:1, person2Id:5, relationType:'君臣', description:'刘备与赵云' },
-  { id:6, person1Id:1, person2Id:6, relationType:'君臣', description:'刘备收马超' },
-  { id:7, person1Id:1, person2Id:7, relationType:'君臣', description:'刘备与黄忠' },
-  { id:8, person1Id:1, person2Id:8, relationType:'君臣', description:'刘备与魏延' },
-  { id:9, person1Id:1, person2Id:9, relationType:'君臣', description:'刘备与庞统' },
-  { id:10, person1Id:1, person2Id:10, relationType:'君臣', description:'刘备与法正' },
-  { id:11, person1Id:4, person2Id:11, relationType:'师徒', description:'诸葛亮传衣钵于姜维' },
-  // 曹魏君臣
-  { id:12, person1Id:14, person2Id:22, relationType:'君臣', description:'曹操与郭嘉' },
-  { id:13, person1Id:14, person2Id:20, relationType:'君臣', description:'曹操与荀彧' },
-  { id:14, person1Id:14, person2Id:21, relationType:'君臣', description:'曹操与荀攸' },
-  { id:15, person1Id:14, person2Id:18, relationType:'宗亲', description:'曹操与夏侯惇族兄弟' },
-  { id:16, person1Id:14, person2Id:24, relationType:'君臣', description:'曹操与典韦护卫' },
-  { id:17, person1Id:14, person2Id:25, relationType:'君臣', description:'曹操与许褚护卫' },
-  { id:18, person1Id:14, person2Id:15, relationType:'父子', description:'曹操与吕布（曾欲认父反被杀）' },
-  { id:19, person1Id:14, person2Id:17, relationType:'君臣', description:'曹操与司马懿，托孤又忌惮' },
-  // 东吴
-  { id:20, person1Id:33, person2Id:38, relationType:'君臣', description:'孙权与周瑜' },
-  { id:21, person1Id:33, person2Id:39, relationType:'君臣', description:'孙权与鲁肃' },
-  { id:22, person1Id:33, person2Id:40, relationType:'君臣', description:'孙权与吕蒙' },
-  { id:23, person1Id:33, person2Id:44, relationType:'君臣', description:'孙权与陆逊' },
-  { id:24, person1Id:33, person2Id:45, relationType:'君臣', description:'孙权与甘宁' },
-  { id:25, person1Id:31, person2Id:32, relationType:'父子', description:'孙坚孙策父子' },
-  { id:26, person1Id:32, person2Id:33, relationType:'兄弟', description:'孙策孙权兄弟，兄终弟及' },
-  { id:27, person1Id:38, person2Id:39, relationType:'同僚', description:'周瑜鲁肃，东吴战略支柱' },
-  // 群雄
-  { id:28, person1Id:15, person2Id:100, relationType:'父子', description:'吕布认董卓为义父后杀之' },
-  { id:29, person1Id:100, person2Id:107, relationType:'君臣', description:'董卓与王允，被连环计所害' },
-  { id:30, person1Id:107, person2Id:16, relationType:'义父女', description:'王允义女貂蝉行连环计' },
-  { id:31, person1Id:15, person2Id:36, relationType:'主从', description:'吕布与陈宫，下邳同亡' },
-  { id:32, person1Id:108, person2Id:109, relationType:'主从', description:'袁绍与颜良' },
-  { id:33, person1Id:108, person2Id:110, relationType:'主从', description:'袁绍与文丑' },
-  { id:34, person1Id:108, person2Id:111, relationType:'主从', description:'袁绍与田丰' },
-  { id:35, person1Id:108, person2Id:112, relationType:'主从', description:'袁绍与沮授' },
-  { id:36, person1Id:108, person2Id:14, relationType:'故交', description:'袁绍曹操少时好友后争霸' },
-  // 敌对
-  { id:37, person1Id:1, person2Id:14, relationType:'敌对', description:'刘备曹操，天下英雄唯使君与操耳' },
-  { id:38, person1Id:4, person2Id:17, relationType:'敌对', description:'诸葛亮司马懿宿命对手' },
-  { id:39, person1Id:2, person2Id:41, relationType:'敌对', description:'关羽吕蒙，白衣渡江之仇' },
-  { id:40, person1Id:1, person2Id:33, relationType:'盟友', description:'孙刘联盟抗曹' },
-  // 夫妻
-  { id:41, person1Id:32, person2Id:53, relationType:'夫妻', description:'孙策大乔' },
-  { id:42, person1Id:38, person2Id:54, relationType:'夫妻', description:'周瑜小乔' },
-  { id:43, person1Id:1, person2Id:48, relationType:'夫妻', description:'刘备孙夫人，赔了夫人又折兵' },
-  // 司马氏
-  { id:44, person1Id:17, person2Id:18, relationType:'父子', description:'司马懿司马师' },
-  { id:45, person1Id:17, person2Id:19, relationType:'父子', description:'司马懿司马昭' },
-  { id:46, person1Id:19, person2Id:23, relationType:'父子', description:'司马昭司马炎' },
-  // 蜀汉二代
-  { id:47, person1Id:2, person2Id:12, relationType:'父子', description:'关羽关平' },
-  { id:48, person1Id:2, person2Id:13, relationType:'父子', description:'关羽关兴' },
-  { id:49, person1Id:3, person2Id:14, relationType:'父子', description:'张飞张苞' },
-  { id:50, person1Id:1, person2Id:37, relationType:'父子', description:'刘备刘禅' },
-  // 马家
-  { id:51, person1Id:6, person2Id:50, relationType:'父子', description:'马超马岱' },
-  // 三顾茅庐
-  { id:52, person1Id:1, person2Id:9, relationType:'知遇', description:'刘备庞统' },
-  // 蜀汉五虎
-  { id:53, person1Id:2, person2Id:6, relationType:'同僚', description:'关羽马超，关羽欲入川比武' },
-  { id:54, person1Id:2, person2Id:7, relationType:'同僚', description:'关羽黄忠，长沙之战后同僚' },
-  { id:55, person1Id:5, person2Id:6, relationType:'同僚', description:'赵云马超' },
+  // === 桃园三兄弟 ===
+  { id: 1, person1Id: 3, person2Id: 15, relationType: '结义兄弟', description: '桃园三结义，刘备为兄，关羽为二弟' },
+  { id: 2, person1Id: 3, person2Id: 2, relationType: '结义兄弟', description: '桃园三结义，张飞为三弟' },
+  { id: 3, person1Id: 15, person2Id: 2, relationType: '结义兄弟', description: '关羽与张飞，二弟三弟' },
+  // === 蜀汉君臣 ===
+  { id: 4, person1Id: 3, person2Id: 135, relationType: '君臣', description: '刘备三顾茅庐请诸葛亮出山' },
+  { id: 5, person1Id: 3, person2Id: 61, relationType: '君臣', description: '刘备与赵云，常山赵子龙忠勇无双' },
+  { id: 6, person1Id: 3, person2Id: 74, relationType: '君臣', description: '刘备收马超，五虎上将之西凉锦马超' },
+  { id: 7, person1Id: 3, person2Id: 157, relationType: '君臣', description: '刘备收黄忠，五虎上将之老当益壮' },
+  { id: 8, person1Id: 3, person2Id: 150, relationType: '君臣', description: '刘备与魏延，蜀汉大将镇守汉中' },
+  { id: 9, person1Id: 3, person2Id: 133, relationType: '君臣', description: '刘备与庞统，凤雏先生落凤坡归天' },
+  { id: 10, person1Id: 3, person2Id: 165, relationType: '君臣', description: '刘备与法正，蜀汉谋主定汉中' },
+  { id: 11, person1Id: 135, person2Id: 185, relationType: '师徒', description: '诸葛亮传衣钵于姜维，九伐中原' },
+  { id: 12, person1Id: 3, person2Id: 131, relationType: '父子', description: '刘备与刘禅，蜀汉后主' },
+  { id: 13, person1Id: 3, person2Id: 158, relationType: '夫妻', description: '刘备与孙夫人，赔了夫人又折兵' },
+  // === 蜀汉五虎将 ===
+  { id: 14, person1Id: 15, person2Id: 74, relationType: '同僚', description: '关羽与马超，五虎上将，关羽欲入川比武' },
+  { id: 15, person1Id: 15, person2Id: 157, relationType: '同僚', description: '关羽与黄忠，长沙之战后同列五虎' },
+  { id: 16, person1Id: 61, person2Id: 74, relationType: '同僚', description: '赵云与马超，两虎相争' },
+  { id: 17, person1Id: 61, person2Id: 150, relationType: '同僚', description: '赵云与魏延，蜀汉大将' },
+  // === 关羽父子 ===
+  { id: 18, person1Id: 15, person2Id: 119, relationType: '父子', description: '关羽与关平，义子同守荆州' },
+  { id: 19, person1Id: 15, person2Id: 177, relationType: '父子', description: '关羽与关兴，次子继承父志' },
+  // === 张飞父子 ===
+  { id: 20, person1Id: 2, person2Id: 180, relationType: '父子', description: '张飞与张苞，虎父无犬子' },
+  // === 马家 ===
+  { id: 21, person1Id: 74, person2Id: 161, relationType: '宗亲', description: '马超与马岱，堂弟相随' },
+  { id: 22, person1Id: 171, person2Id: 156, relationType: '兄弟', description: '马谡与马良，白眉最良' },
+  // === 曹魏 ===
+  { id: 23, person1Id: 1, person2Id: 80, relationType: '君臣', description: '曹操与郭嘉，鬼才早逝' },
+  { id: 24, person1Id: 1, person2Id: 77, relationType: '君臣', description: '曹操与荀彧，王佐之才' },
+  { id: 25, person1Id: 1, person2Id: 21, relationType: '君臣', description: '曹操与荀攸，谋主奇才' },
+  { id: 26, person1Id: 1, person2Id: 40, relationType: '宗亲', description: '曹操与夏侯惇，族兄弟' },
+  { id: 27, person1Id: 1, person2Id: 42, relationType: '宗亲', description: '曹操与夏侯渊，族兄弟' },
+  { id: 28, person1Id: 1, person2Id: 78, relationType: '君臣', description: '曹操与典韦，古之恶来护卫' },
+  { id: 29, person1Id: 1, person2Id: 88, relationType: '君臣', description: '曹操与许褚，虎痴护卫' },
+  { id: 30, person1Id: 1, person2Id: 148, relationType: '君臣', description: '曹操与司马懿，托孤又忌惮' },
+  { id: 31, person1Id: 1, person2Id: 83, relationType: '君臣', description: '曹操与张辽，五子良将之首' },
+  { id: 32, person1Id: 40, person2Id: 42, relationType: '兄弟', description: '夏侯惇与夏侯渊' },
+  { id: 33, person1Id: 1, person2Id: 124, relationType: '父子', description: '曹操与曹丕，魏文帝' },
+  // === 司马氏 ===
+  { id: 34, person1Id: 148, person2Id: 179, relationType: '父子', description: '司马懿与司马师' },
+  { id: 35, person1Id: 148, person2Id: 186, relationType: '父子', description: '司马懿与司马昭' },
+  { id: 36, person1Id: 179, person2Id: 186, relationType: '兄弟', description: '司马师与司马昭' },
+  // === 东吴 ===
+  { id: 37, person1Id: 96, person2Id: 97, relationType: '君臣', description: '孙权与周瑜，江东双璧' },
+  { id: 38, person1Id: 96, person2Id: 120, relationType: '君臣', description: '孙权与鲁肃，榻上策谋' },
+  { id: 39, person1Id: 96, person2Id: 138, relationType: '君臣', description: '孙权与吕蒙，白衣渡江' },
+  { id: 40, person1Id: 96, person2Id: 139, relationType: '君臣', description: '孙权与陆逊，火烧连营' },
+  { id: 41, person1Id: 96, person2Id: 137, relationType: '君臣', description: '孙权与甘宁，锦帆游侠' },
+  { id: 42, person1Id: 62, person2Id: 20, relationType: '父子', description: '孙坚与孙策，江东小霸王' },
+  { id: 43, person1Id: 62, person2Id: 96, relationType: '兄弟', description: '孙策与孙权，兄终弟及' },
+  { id: 44, person1Id: 97, person2Id: 120, relationType: '同僚', description: '周瑜与鲁肃，东吴战略支柱' },
+  { id: 45, person1Id: 120, person2Id: 138, relationType: '同僚', description: '鲁肃与吕蒙，士别三日刮目相看' },
+  { id: 46, person1Id: 138, person2Id: 139, relationType: '同僚', description: '吕蒙与陆逊，白衣渡江搭档' },
+  { id: 47, person1Id: 97, person2Id: 44, relationType: '同僚', description: '周瑜与黄盖，苦肉计' },
+  { id: 48, person1Id: 62, person2Id: 154, relationType: '夫妻', description: '孙策与大乔' },
+  { id: 49, person1Id: 97, person2Id: 153, relationType: '夫妻', description: '周瑜与小乔' },
+  { id: 50, person1Id: 137, person2Id: 84, relationType: '同僚', description: '甘宁与太史慈，东吴猛将' },
+  // === 群雄 ===
+  { id: 51, person1Id: 23, person2Id: 4, relationType: '义父子', description: '吕布认董卓为义父，后杀之' },
+  { id: 52, person1Id: 4, person2Id: 27, relationType: '君臣', description: '董卓与王允，被连环计所害' },
+  { id: 53, person1Id: 27, person2Id: 70, relationType: '义父女', description: '王允义女貂蝉，行连环计' },
+  { id: 54, person1Id: 23, person2Id: 36, relationType: '主从', description: '吕布与陈宫，下邳同亡' },
+  { id: 55, person1Id: 19, person2Id: 48, relationType: '主从', description: '袁绍与颜良，河北上将' },
+  { id: 56, person1Id: 19, person2Id: 46, relationType: '主从', description: '袁绍与文丑，河北上将' },
+  { id: 57, person1Id: 19, person2Id: 1, relationType: '敌对', description: '袁绍与曹操，官渡之战' },
+  { id: 58, person1Id: 24, person2Id: 19, relationType: '兄弟', description: '袁术与袁绍，同父异母' },
+  { id: 59, person1Id: 55, person2Id: 3, relationType: '宗亲', description: '刘表与刘备，同宗之亲' },
+  // === 敌对 ===
+  { id: 60, person1Id: 3, person2Id: 1, relationType: '敌对', description: '刘备与曹操，天下英雄唯使君与操耳' },
+  { id: 61, person1Id: 135, person2Id: 148, relationType: '敌对', description: '诸葛亮与司马懿，宿命对手' },
+  { id: 62, person1Id: 15, person2Id: 138, relationType: '敌对', description: '关羽与吕蒙，白衣渡江之仇' },
+  { id: 63, person1Id: 15, person2Id: 51, relationType: '敌对', description: '关羽温酒斩华雄' },
+  { id: 64, person1Id: 15, person2Id: 48, relationType: '敌对', description: '关羽斩颜良，白马解围' },
+  { id: 65, person1Id: 15, person2Id: 46, relationType: '敌对', description: '关羽斩文丑，延津之战' },
+  { id: 66, person1Id: 1, person2Id: 23, relationType: '敌对', description: '曹操与吕布，濮阳之战' },
+  { id: 67, person1Id: 193, person2Id: 194, relationType: '同僚', description: '邓艾与钟会，灭蜀双将' },
+  { id: 68, person1Id: 185, person2Id: 193, relationType: '敌对', description: '姜维与邓艾，棋逢对手' },
+  // === 盟友 ===
+  { id: 69, person1Id: 3, person2Id: 96, relationType: '盟友', description: '孙刘联盟抗曹' },
+  { id: 70, person1Id: 135, person2Id: 97, relationType: '盟友', description: '诸葛亮与周瑜，赤壁联手' },
+  { id: 71, person1Id: 135, person2Id: 120, relationType: '盟友', description: '诸葛亮与鲁肃，荆州斡旋' },
+  // === 知遇 ===
+  { id: 72, person1Id: 3, person2Id: 133, relationType: '知遇', description: '刘备与庞统，凤雏来投' },
+  { id: 73, person1Id: 1, person2Id: 83, relationType: '知遇', description: '曹操收张辽于吕布麾下' },
+  // === 其他经典关系 ===
+  { id: 74, person1Id: 15, person2Id: 1, relationType: '故交', description: '关羽暂降曹操，千里走单骑' },
+  { id: 75, person1Id: 1, person2Id: 19, relationType: '故交', description: '袁绍曹操少时好友后争霸' },
+  { id: 76, person1Id: 77, person2Id: 21, relationType: '宗亲', description: '荀彧与荀攸，叔侄共事曹操' },
+  { id: 77, person1Id: 135, person2Id: 133, relationType: '同僚', description: '诸葛亮与庞统，卧龙凤雏' },
+  { id: 78, person1Id: 3, person2Id: 55, relationType: '宗亲', description: '刘备依附刘表，同宗相助' },
 ]
 
 export const relationTypeColors: Record<string, string> = {
@@ -85,4 +110,5 @@ export const relationTypeColors: Record<string, string> = {
   '故交': '#0891b2',
   '知遇': '#059669',
   '义父女': '#db2777',
+  '义父子': '#9333ea',
 }
