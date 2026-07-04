@@ -61,13 +61,17 @@ const clearAll = () => {
   markers = []; polygons = []; lines = []
 }
 
+const makeIcon = (color: string, label?: string, size = 14) => L.divIcon({
+  html: `<div style="position:relative;width:${size}px;height:${size}px;border-radius:50%;background:${color};border:2px solid #fff;box-shadow:0 0 4px rgba(0,0,0,.6)"></div>${label ? `<div style="position:absolute;left:${size+4}px;top:-2px;white-space:nowrap;background:rgba(255,253,240,.92);color:#2b1a0e;padding:1px 6px;border-radius:3px;font-size:11px;font-family:'KaiTi','STKaiti',serif;border:1px solid ${color};box-shadow:0 1px 3px rgba(0,0,0,.25)">${label}</div>` : ''}`,
+  className: '', iconSize: [size, size]
+})
+
 const renderAll = () => {
   clearAll()
   locations.forEach(loc => {
     const m = L.marker(loc.coordinates).addTo(map!)
-    m.bindPopup(`<b>${loc.name}</b><br/>${loc.type} · ${loc.modernName}<br/>${loc.description}`)
-    const icon = L.divIcon({ html: `<div style="width:14px;height:14px;border-radius:50%;background:${typeColor(loc.type)};border:2px solid #fff;box-shadow:0 0 4px rgba(0,0,0,.5)"></div>`, className: '', iconSize: [14,14] })
-    m.setIcon(icon)
+    m.bindPopup(`<b style="font-size:14px">${loc.name}</b><br/>类型：${loc.type}<br/>今址：${loc.modernName}<br/>所属势力：${loc.factionId ? factions[loc.factionId-1]?.name || '—' : '—'}<br/>简介：${loc.description}`)
+    m.setIcon(makeIcon(typeColor(loc.type), loc.name))
     markers.push(m)
   })
 }
@@ -77,13 +81,14 @@ const renderFaction = () => {
   factions.slice(0,3).forEach(f => {
     f.territory.forEach(t => {
       const poly = L.polygon(t.points, { color: f.color, weight: 2, fillColor: f.color, fillOpacity: 0.25 }).addTo(map!)
-      poly.bindPopup(`<b>${f.name} · ${t.name}</b>`)
+      poly.bindPopup(`<b style="color:${f.color}">${f.name} · ${t.name}</b>`)
       polygons.push(poly)
     })
     const cap = locations.find(l => l.name === f.capital)
     if (cap) {
       const m = L.marker(cap.coordinates).addTo(map!)
       m.bindPopup(`<b>${f.name}都城 · ${f.capital}</b>`)
+      m.setIcon(makeIcon(f.color, `${f.capital}·都城`, 16))
       markers.push(m)
     }
   })
@@ -93,9 +98,8 @@ const renderBattle = () => {
   clearAll()
   battles.filter(b => b.coordinates).forEach(b => {
     const m = L.marker(b.coordinates!).addTo(map!)
-    m.bindPopup(`<b>${b.name}</b><br/>第${b.chapter}回 · ${b.date}<br/>结果：${b.result}`)
-    const icon = L.divIcon({ html: `<div style="width:16px;height:16px;background:#ec4899;transform:rotate(45deg);border:2px solid #fff;box-shadow:0 0 4px rgba(0,0,0,.5)"></div>`, className: '', iconSize: [16,16] })
-    m.setIcon(icon)
+    m.bindPopup(`<b style="font-size:14px">${b.name}</b><br/>第${b.chapter}回 · ${b.date}<br/>结果：${b.result}`)
+    m.setIcon(makeIcon('#ec4899', b.name, 16))
     markers.push(m)
   })
   // 几条经典战役路线
@@ -119,8 +123,9 @@ watch(layer, () => {
 
 onMounted(() => {
   map = L.map(mapRef.value!, { zoomControl: true, attributionControl: false }).setView([33, 110], 4)
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    subdomains: 'abcd', maxZoom: 18
+  // 高德地图瓦片（国内可访问）
+  L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
+    subdomains: ['1', '2', '3', '4'], maxZoom: 18, className: 'gaode-tile'
   }).addTo(map)
   renderAll()
 })
