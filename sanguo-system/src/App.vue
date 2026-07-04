@@ -38,13 +38,13 @@
 
 <script setup lang="ts">
 import { useRouter, useRoute } from 'vue-router'
-import { Home, User, Reading, Flag, Timer, Location, Share, Search } from '@element-plus/icons-vue'
+import { House, User, Reading, Flag, Timer, Location, Share, Search } from '@element-plus/icons-vue'
 
 const router = useRouter()
 const route = useRoute()
 
 const menu = [
-  { path: '/', label: '首页', icon: Home },
+  { path: '/', label: '首页', icon: House },
   { path: '/persons', label: '人物谱', icon: User },
   { path: '/reading', label: '原文', icon: Reading },
   { path: '/battles', label: '战役志', icon: Flag },
