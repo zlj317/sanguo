@@ -1,0 +1,184 @@
+/* ===== 三国演义系统全局样式 · 古典雅致风 ===== */
+:root {
+  --ink: #1a1410;           /* 墨色 */
+  --ink-soft: #3d2e24;
+  --paper: #f5ecd7;         /* 宣纸色 */
+  --paper-dark: #ebdfc4;
+  --paper-darker: #d9c9a3;
+  --vermilion: #a8201a;     /* 朱红 */
+  --vermilion-light: #c84545;
+  --gold: #b8860b;          /* 鎏金 */
+  --gold-light: #d4a843;
+  --jade: #2e7d52;          /* 青绿 */
+  --shu: #22c55e;
+  --wei: #3b82f6;
+  --wu: #f59e0b;
+  --qun: #6b7280;
+  --line: #c9b896;
+  --shadow: 0 4px 20px rgba(80, 50, 20, 0.12);
+  --shadow-lg: 0 8px 32px rgba(80, 50, 20, 0.18);
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #app {
+  margin: 0; padding: 0;
+  height: 100%;
+  font-family: "PingFang SC", "Microsoft YaHei", "STSong", "SimSun", serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(184,134,11,0.05), transparent 40%),
+    radial-gradient(circle at 80% 90%, rgba(168,32,26,0.04), transparent 40%),
+    linear-gradient(180deg, #f7eed9 0%, #f0e4cb 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+a { color: var(--vermilion); text-decoration: none; }
+a:hover { color: var(--vermilion-light); }
+
+/* 滚动条 */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--paper-dark); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--vermilion); }
+
+/* 通用页面容器 */
+.page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 28px 48px;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.page-header::after {
+  content: '';
+  position: absolute;
+  left: 50%; bottom: -1px;
+  transform: translateX(-50%);
+  width: 120px; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--vermilion), transparent);
+}
+.page-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 6px;
+  margin: 0 0 8px;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+.page-desc {
+  color: var(--ink-soft);
+  font-size: 14px;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+/* 古典卡片 */
+.classic-card {
+  background: linear-gradient(135deg, #fdf6e3 0%, #f5ecd7 100%);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.classic-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+  border-color: var(--gold);
+}
+
+/* 头像通用样式 */
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--paper-dark), var(--paper-darker));
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+  font-family: "STKaiti", "KaiTi", serif;
+  font-weight: 700;
+  color: var(--ink);
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.avatar.no-avatar::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid var(--gold-light);
+  border-radius: 50%;
+}
+
+/* 势力色 */
+.faction-shu { --fc: var(--shu); }
+.faction-wei { --fc: var(--wei); }
+.faction-wu { --fc: var(--wu); }
+.faction-qun { --fc: var(--qun); }
+
+/* 标签 */
+.el-tag { font-family: inherit; }
+
+/* Element Plus 主题微调 */
+.el-button--primary {
+  --el-button-bg-color: var(--vermilion);
+  --el-button-border-color: var(--vermilion);
+  --el-button-hover-bg-color: var(--vermilion-light);
+  --el-button-hover-border-color: var(--vermilion-light);
+}
+
+/* 动画 */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.fade-in { animation: fadeIn 0.4s ease; }
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(184,134,11,0.3); }
+  50% { box-shadow: 0 0 16px rgba(184,134,11,0.6); }
+}
+
+/* 印章装饰 */
+.seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--vermilion);
+  color: #fde9c8;
+  font-family: "STKaiti", "KaiTi", serif;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+/* 分隔云纹 */
+.cloud-divider {
+  text-align: center;
+  color: var(--gold);
+  margin: 20px 0;
+  font-size: 18px;
+  letter-spacing: 8px;
+}
+
+/* 文字工具类 */
+.text-shu { color: var(--shu); }
+.text-wei { color: var(--wei); }
+.text-wu { color: var(--wu); }
+.text-qun { color: var(--qun); }
+.text-vermilion { color: var(--vermilion); }
+.text-gold { color: var(--gold); }

@@ -1,0 +1,38 @@
+import type { TimelineEvent } from '@/types'
+
+export const timelineEvents: TimelineEvent[] = [
+  { id:1, year:'184年', title:'黄巾起义', description:'张角发动黄巾起义，刘备关羽张飞桃园结义从军。', chapter:1, type:'军事', relatedPersons:[1,2,3,100], importance:10 },
+  { id:2, year:'189年', title:'何进被杀·董卓进京', description:'何进欲诛宦官反被杀，董卓趁机进京专权。', chapter:2, type:'政治', relatedPersons:[101,100,14], importance:9 },
+  { id:3, year:'189年', title:'董卓废立皇帝', description:'董卓废少帝立献帝，独揽朝政。', chapter:3, type:'政治', relatedPersons:[100], importance:9 },
+  { id:4, year:'190年', title:'十八路诸侯讨董', description:'关东诸侯推袁绍为盟主讨董卓，关羽温酒斩华雄，三英战吕布。', chapter:5, type:'军事', relatedPersons:[1,2,3,14,15,108,99], relatedBattles:[2,3], importance:10 },
+  { id:5, year:'192年', title:'王允连环计诛董卓', description:'王允用貂蝉行连环计，吕布杀董卓。不久李傕郭汜反攻，王允殉国。', chapter:8, type:'政治', relatedPersons:[107,16,100], relatedBattles:[4], importance:9 },
+  { id:6, year:'194年', title:'陶谦三让徐州', description:'陶谦病重三让徐州于刘备。曹操为父报仇屠徐州。', chapter:11, type:'政治', relatedPersons:[1,33,14], relatedBattles:[6], importance:7 },
+  { id:7, year:'196年', title:'曹操迎献帝都许', description:'曹操迎汉献帝都许昌，挟天子以令诸侯。', chapter:14, type:'政治', relatedPersons:[14], importance:9 },
+  { id:8, year:'197年', title:'宛城之变', description:'张绣先降后叛，典韦战死，曹昂被害。', chapter:16, type:'军事', relatedPersons:[14,24], relatedBattles:[7], importance:7 },
+  { id:9, year:'198年', title:'白门楼吕布殒命', description:'曹操刘备围下邳，擒杀吕布陈宫。', chapter:19, type:'军事', relatedPersons:[1,2,3,14,15,36], relatedBattles:[8], importance:8 },
+  { id:10, year:'199年', title:'公孙瓒自焚·袁术败亡', description:'袁绍破易京公孙瓒自焚，袁术僭号众叛亲离呕血而死。', chapter:21, type:'军事', relatedPersons:[108,49,109], importance:7 },
+  { id:11, year:'200年', title:'青梅煮酒论英雄', description:'曹操青梅煮酒试刘备，"天下英雄唯使君与操耳"。', chapter:21, type:'人物', relatedPersons:[1,14], importance:8 },
+  { id:12, year:'200年', title:'官渡之战', description:'曹操以弱胜强，烧乌巢破袁绍，奠定北方霸业。', chapter:30, type:'军事', relatedPersons:[14,108,113,116,17], relatedBattles:[10], importance:10 },
+  { id:13, year:'200年', title:'孙策遇刺·孙权继位', description:'孙策遇刺身亡，孙权继位，鲁肃榻上策。', chapter:29, type:'政治', relatedPersons:[32,33,39], importance:9 },
+  { id:14, year:'207年', title:'三顾茅庐', description:'刘备三顾茅庐请诸葛亮，隆中对定三分。', chapter:37, type:'人物', relatedPersons:[1,4], importance:10 },
+  { id:15, year:'208年', title:'长坂坡·赤壁之战', description:'赵云单骑救主，赤壁火烧曹军，三分天下。', chapter:49, type:'军事', relatedPersons:[1,2,3,5,14,33,38,39,40], relatedBattles:[14,15], importance:10 },
+  { id:16, year:'209年', title:'刘备取荆南四郡', description:'赤壁后刘备趁势取荆南四郡，借荆州立足。', chapter:52, type:'政治', relatedPersons:[1,4], importance:7 },
+  { id:17, year:'211年', title:'刘备入川', description:'刘璋迎刘备入川抗张鲁，刘备反客为主图益州。', chapter:60, type:'军事', relatedPersons:[1,9,30], importance:8 },
+  { id:18, year:'214年', title:'刘备取益州', description:'庞统落凤坡身亡，诸葛亮张飞赵云入川，刘璋降。', chapter:65, type:'军事', relatedPersons:[1,4,9,30], relatedBattles:[18], importance:9 },
+  { id:19, year:'215年', title:'逍遥津之战', description:'孙权攻合肥，张辽八百勇士威震逍遥津。', chapter:67, type:'军事', relatedPersons:[26,33], relatedBattles:[17], importance:7 },
+  { id:20, year:'219年', title:'定军山·取汉中', description:'黄忠斩夏侯渊，刘备取汉中称汉中王。', chapter:70, type:'军事', relatedPersons:[1,7,19,14], relatedBattles:[19], importance:9 },
+  { id:21, year:'219年', title:'水淹七军·败走麦城', description:'关羽水淹七军威震华夏，吕蒙白衣渡江，关羽败走麦城被杀。', chapter:74, type:'军事', relatedPersons:[2,33,41,14,22,29], relatedBattles:[20,21], importance:10 },
+  { id:22, year:'220年', title:'曹操病逝·曹丕称帝', description:'曹操病逝洛阳，曹丕逼献帝禅让，代汉建魏，东汉亡。', chapter:80, type:'政治', relatedPersons:[14,15], importance:9 },
+  { id:23, year:'221年', title:'刘备称帝·伐吴', description:'刘备成都称帝国号汉，起兵伐吴为关羽报仇。', chapter:81, type:'政治', relatedPersons:[1], importance:8 },
+  { id:24, year:'222年', title:'夷陵之战', description:'陆逊火烧连营七百里，刘备大败退白帝城。', chapter:84, type:'军事', relatedPersons:[1,33,44,4], relatedBattles:[22], importance:10 },
+  { id:25, year:'223年', title:'白帝城托孤', description:'刘备病逝白帝城，托孤诸葛亮，刘禅继位。', chapter:85, type:'政治', relatedPersons:[1,4,37], importance:9 },
+  { id:26, year:'225年', title:'七擒孟获', description:'诸葛亮南征，七擒七纵孟获，平定南中。', chapter:90, type:'军事', relatedPersons:[4,11], relatedBattles:[23], importance:7 },
+  { id:27, year:'228年', title:'一出祁山·失街亭', description:'诸葛亮北伐，马谡失街亭，空城计退司马懿，挥泪斩马谡。', chapter:95, type:'军事', relatedPersons:[4,17,12,27], relatedBattles:[24], importance:9 },
+  { id:28, year:'234年', title:'秋风五丈原', description:'诸葛亮最后一次北伐，与司马懿对峙五丈原，病逝军中。', chapter:104, type:'人物', relatedPersons:[4,17,11], relatedBattles:[25], importance:10 },
+  { id:29, year:'249年', title:'高平陵之变', description:'司马懿发动政变夺权，曹爽被诛，司马氏专魏政。', chapter:106, type:'政治', relatedPersons:[17,18,19], importance:8 },
+  { id:30, year:'263年', title:'灭蜀', description:'钟会攻剑阁，邓艾偷渡阴平，刘禅降，蜀汉亡。姜维假降图复国事败。', chapter:118, type:'军事', relatedPersons:[11,17,20,37], relatedBattles:[26], importance:9 },
+  { id:31, year:'265年', title:'司马炎代魏建晋', description:'司马炎逼曹奂禅让，代魏建晋，魏亡。', chapter:119, type:'政治', relatedPersons:[23], importance:8 },
+  { id:32, year:'280年', title:'灭吴·三国归一', description:'王濬楼船下益州，孙皓降，三国归晋，天下一统。', chapter:120, type:'军事', relatedPersons:[23], relatedBattles:[27], importance:10 },
+]
+
+export const getTimelineById = (id: number) => timelineEvents.find(e => e.id === id)
