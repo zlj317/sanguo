@@ -71,8 +71,15 @@
         <div class="rel-list">
           <div v-for="r in relations" :key="r.id" class="rel-item" @click="router.push(`/persons/${r.otherId}`)">
             <span class="rel-type" :style="{ background: relColor(r.relationType) }">{{ r.relationType }}</span>
-            <span class="rel-name">{{ r.otherName }}</span>
-            <span class="rel-desc" v-if="r.description">{{ r.description }}</span>
+            <div class="rel-avatar" :style="{ borderColor: r.otherFactionColor }">
+              <img v-if="r.otherAvatar" :src="r.otherAvatar" :alt="r.otherName" />
+              <span v-else :style="{ color: r.otherFactionColor }">{{ r.otherName.charAt(0) }}</span>
+            </div>
+            <div class="rel-info">
+              <span class="rel-name">{{ r.otherName }}</span>
+              <span class="rel-desc" v-if="r.description">{{ r.description }}</span>
+            </div>
+            <el-icon class="rel-arrow"><ArrowRight /></el-icon>
           </div>
         </div>
       </div>
@@ -84,7 +91,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { ArrowLeft, Star } from '@element-plus/icons-vue'
+import { ArrowLeft, ArrowRight, Star } from '@element-plus/icons-vue'
 import { persons, getPersonById } from '@/mock/persons'
 import { personRelations, relationTypeColors } from '@/mock/relations'
 import { getFactionName, getFactionColor } from '@/mock/factions'
@@ -104,7 +111,15 @@ const relations = computed(() => {
     .map(r => {
       const otherId = r.person1Id === person.id ? r.person2Id : r.person1Id
       const other = getPersonById(otherId)
-      return { id: r.id, otherId, otherName: other?.name || '未知', relationType: r.relationType, description: r.description }
+      return {
+        id: r.id,
+        otherId,
+        otherName: other?.name || '未知',
+        otherAvatar: other?.avatarUrl || '',
+        otherFactionColor: other ? getFactionColor(other.factionId) : '#6b7280',
+        relationType: r.relationType,
+        description: r.description
+      }
     })
 })
 
@@ -143,11 +158,15 @@ const relColor = (t: string) => relationTypeColors[t] || '#6b7280'
 .chapter-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .ch-tag { cursor: pointer; }
 .rel-list { display: flex; flex-direction: column; gap: 10px; }
-.rel-item { display: flex; align-items: center; gap: 10px; padding: 8px 10px; background: rgba(184,134,11,0.06); border-radius: 6px; cursor: pointer; transition: all 0.2s; }
-.rel-item:hover { background: rgba(168,32,26,0.1); }
-.rel-type { color: #fff; font-size: 12px; padding: 2px 8px; border-radius: 4px; }
-.rel-name { font-weight: 700; }
-.rel-desc { color: var(--ink-soft); font-size: 12px; margin-left: auto; }
+.rel-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; background: rgba(184,134,11,0.06); border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+.rel-item:hover { background: rgba(168,32,26,0.1); transform: translateX(4px); }
+.rel-type { color: #fff; font-size: 12px; padding: 3px 10px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
+.rel-avatar { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--gold); background: linear-gradient(135deg, #ebdfc4, #d9c9a3); display: flex; align-items: center; justify-content: center; font-size: 18px; font-family: "STKaiti", serif; font-weight: 700; overflow: hidden; flex-shrink: 0; }
+.rel-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.rel-info { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+.rel-name { font-weight: 700; font-size: 15px; }
+.rel-desc { color: var(--ink-soft); font-size: 12px; }
+.rel-arrow { color: var(--ink-soft); font-size: 14px; }
 
 @media (max-width: 800px) {
   .detail-hero { flex-direction: column; align-items: center; text-align: center; }
