@@ -26042,3 +26042,8 @@ export const persons: Person[] = [
     firstAppearanceChapter: 112,
   },
 ]
+
+export const getPersonById = (id: number) => persons.find(p => p.id === id)
+export const getPersonsByFaction = (factionId: number) => persons.filter(p => p.factionId === factionId)
+export const getPersonName = (id: number) => getPersonById(id)?.name || '未知'
+export const searchPersons = (keyword: string) => persons.filter(p => p.name.includes(keyword) || p.courtesyName.includes(keyword) || p.titleName.includes(keyword))
