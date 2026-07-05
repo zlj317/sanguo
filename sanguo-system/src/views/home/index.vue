@@ -6,8 +6,8 @@
       <div class="hero-content">
         <div class="hero-seal">三國演義</div>
         <h1 class="hero-title">三国演义</h1>
-        <p class="hero-subtitle">滚滚长江东逝水 · 浪花淘尽英雄</p>
-        <p class="hero-desc">基于《三国演义》全书的智能分析系统 · 人物 谱 · 战役志 · 地理图 · 关系网</p>
+        <p class="hero-subtitle">简化阅读 · 高效学习 · 深度解读</p>
+        <p class="hero-desc">120回全本原文 · 1085位人物图谱 · 智能关系分析 · 经典战役详解</p>
         <div class="hero-stats">
           <div class="stat-item" v-for="s in stats" :key="s.label">
             <div class="stat-num">{{ s.value }}</div>
@@ -87,11 +87,11 @@ const stats = computed(() => [
 const personCount = (fid: number) => persons.filter(p => p.factionId === fid).length
 
 const features = [
-  { path: '/persons', title: '人物谱', desc: '全390位三国人物，含有名无名角色', icon: User },
-  { path: '/reading', title: '原文阅读', desc: '120回全本原文，仿古排版', icon: Reading },
-  { path: '/battles', title: '战役志', desc: '28场经典战役详解', icon: Flag },
-  { path: '/timeline', title: '时间轴', desc: '三国百年大事年表', icon: Timer },
-  { path: '/map', title: '地理图', desc: '三国总图·势力分布·战场', icon: Location },
+  { path: '/persons', title: '人物谱', desc: '1085位三国人物，出场次数·容貌·经典故事', icon: User },
+  { path: '/reading', title: '原文阅读', desc: '120回全本原文，图文并茂', icon: Reading },
+  { path: '/battles', title: '战役志', desc: '经典战役详解，快速掌握历史脉络', icon: Flag },
+  { path: '/timeline', title: '时间轴', desc: '三国百年大事年表，一目了然', icon: Timer },
+  { path: '/map', title: '地理图', desc: '三国总图·势力分布·战场地点', icon: Location },
   { path: '/graph', title: '关系图', desc: '人物关系网络可视化', icon: Share },
   { path: '/search', title: '检索', desc: '全文检索人物战役', icon: Search },
 ]
