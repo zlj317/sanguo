@@ -363,7 +363,7 @@ def main():
                 'aliases': aliases,
                 'count': total,
                 'firstChapter': first_ch,
-                'relatedChapters': related_chs[:20]
+                'relatedChapters': related_chs
             })
         
         if (i + 1) % 100 == 0:
